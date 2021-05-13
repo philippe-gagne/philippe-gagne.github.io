@@ -1,0 +1,12 @@
+body{
+    background-color: coral;
+}
+button{
+    padding: 8px;
+    border-width: 2px;
+    border-color:aqua;
+    color: aqua;
+    background-color: transparent;
+    border-radius: 4px;
+    border-style:solid;
+}
