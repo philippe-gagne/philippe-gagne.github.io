@@ -3,106 +3,42 @@
 <head>
 	<title>SEG3125 Lab 1 | UI Evaluation Survey</title>
 	<link rel="stylesheet" href="styles.css">
+	<meta charset="UTF-8">
 </head>
 <body>
 	<div style="padding-top: 4px;background: linear-gradient(111.66deg, #DD2530 2.84%, #C128C5 50.58%, #3853DE 97.34%);"></div>
-	<div>
-		<header>Philippe Gagné</header>
-	</div>
+		<div class="navbar">
+			<div class="svg-container" style="line-height: 0;">	
+				<a href="https://linktr.ee/philg2000" target="_blank">
+					<img class="svg-1" src='./assets/logo_whitesmoke.svg' style="height: 40px;"><img/>
+				</a>
+			</div>
+			<!-- <div class="dropdown">
+				<button class="dropbtn">Dropdown
+					<i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+				  <a href="#">Link 1</a>
+				  <a href="#">Link 2</a>
+				  <a href="#">Link 3</a>
+				</div>
+			</div> -->
+		</div>
 	
 	<div class="page_content"> 
-		<h1 style="margin-bottom: 4px; margin-top: 12px; font-weight: 500;">UI Evaluation Survey</h1>
-		<h4 style="font-style: italic; margin-top: 0px; margin-bottom: 16px;">SEG3125 Lab 1, Summer 2021</h3>
-		<h5 style="margin-top: 0px;">For this exercise, we're seeking input on the design of 
-			 <a href="https://coolors.co/52489c-4062bb-59c3c3-ebebeb-f45b69" target="_blank">Coolors</a>. Head to the wesbite, go
-			 through the tutorial, play around with the tool for a bit, then come back here to provide your
-			  feedback in the form below. If you can, please use the website in <strong>Incognito mode</strong> (just in case you've 
-			  used it before and have some leftover cookies!).</h5>
-		<a href="https://coolors.co/52489c-4062bb-59c3c3-ebebeb-f45b69" target="_blank">
-			<img src="assets/coolors_screenshot.png" alt="Screenshot of the Coolors tool" style="width:60%;" class="center">
-		</a>
+		<h1 style="margin-bottom: 4px; margin-top: 12px; font-weight: 500;">Hi There!</h1>
+		<h4 style="font-style: italic; margin-top: 0px; margin-bottom: 16px;">Philippe Gagné, May 28th 2021</h3>
 
-		<form>
-			<div class="question">
-				<h4 style="margin: 0px; font-weight: 500;">Question 1</h4>
-				<h5 style="margin-top: 8px; margin-bottom: 12px;">Start by telling us a bit about yourself! Tell us what field your occupation 
-				is in, or which fields you're actively interested in. (You can pick several!) </h5>
-				<input type="checkbox" id="front_end" name="question_1" value="front_end">
-				<label for="front-end">Front-end (or fullstack) software development</label><br>
-				<input type="checkbox" id="web_design" name="question_1" value="web_design">
-				<label for="web_design">Web design</label><br>
-				<input type="checkbox" id="product_design" name="question_1" value="product_design">
-				<label for="product_design">Digital product design</label><br>
-				<input type="checkbox" id="graphic_design" name="question_1" value="graphic_design">
-				<label for="graphic_design">Graphic design</label><br>
-				<input type="checkbox" id="marketing" name="question_1" value="marketing">
-				<label for="marketing">Marketing</label><br>
-				<input type="checkbox" id="artist" name="question_1" value="artist">
-				<label for="full_stack">Digital artist</label><br>
-				<input type="checkbox" id="other" name="question_1" value="other">
-				<label for="other">Other</label><br>
-			</div>
+		<p style="margin-top: 0px;">Welcome to my collection of work for SEG3125 (Analysis and Design of User Interfaces)
+		 at the University of Ottawa. This website is where I'm publishing all my labs for the term. Below are links to each lab
+		 submission. I will continue to update this page throughout the term with links to each new lab. </p>
 
-			<div class="question">
-				<h4 style="margin: 0px; font-weight: 600;">Question 2</h4>
-				<h5 style="margin-top: 8px; margin-bottom: 12px;">I felt that the opening tutorial was complete and easy to follow.</h5>
-			
-				<input type="radio" id="strongly_agree" name="question_2" value="strongly_agree">
-				<label for="strongly_agree">Strongly agree</label><br>
-				<input type="radio" id="agree" name="question_2" value="agree">
-				<label for="agree">Agree</label><br>
-				<input type="radio" id="somewhat_agree" name="question_2" value="somewhat_agree">
-				<label for="somewhat_agree">Somewhat agree</label><br>
-				<input type="radio" id="disagree" name="question_2" value="disagree">
-				<label for="disagree">Disagree</label><br>
-				<input type="radio" id="strongly_disagree" name="question_2" value="strongly_disagree">
-				<label for="strongly_disagree">Strongly disagree</label><br>
-			</div>
+		<p>To anyone who may be viewing this in the future (after Summer 2021), please keep in mind that many of these
+		 tasks were developed on short timelines and were first forays into new technologies, and thus may not be indicative of 
+		 my current skills. &#128521; </p>
+		
+		<h4><a href='./lab01/lab01.html'>Lab 1 - UI Evaluation Survey</a></h4>
 
-			<div class="question">
-				<h4 style="margin: 0px; font-weight: 500;">Question 3</h4>
-				<h5 style="margin-top: 8px; margin-bottom: 12px;">The interface was intuitive and easy to use.</h5>
-			
-				<input type="radio" id="strongly_agree" name="question_3" value="strongly_agree">
-				<label for="strongly_agree">Strongly agree</label><br>
-				<input type="radio" id="agree" name="question_3" value="agree">
-				<label for="agree">Agree</label><br>
-				<input type="radio" id="somewhat_agree" name="question_3" value="somewhat_agree">
-				<label for="somewhat_agree">Somewhat agree</label><br>
-				<input type="radio" id="disagree" name="question_3" value="disagree">
-				<label for="disagree">Disagree</label><br>
-				<input type="radio" id="strongly_disagree" name="question_3" value="strongly_disagree">
-				<label for="strongly_disagree">Strongly disagree</label><br>
-			</div>
-
-			<div class="question">
-				<h4 style="margin: 0px; font-weight: 500;">Question 4</h4>
-				<h5 style="margin-top: 8px; margin-bottom: 12px;">I would use this product for my work or projects.</h5>
-				<select id="question_4" name="question_4">
-					<option value="yes">Yes</option>
-					<option value="no">No</option>
-					<option value="maybe">Maybe</option>
-				</select>
-			</div>
-
-			<div class="question">
-				<h4 style="margin: 0px; font-weight: 500;">Question 5</h4>
-				<h5 style="margin-top: 8px; margin-bottom: 12px;">We'd love to have your email so we can follow up for more feedback!</h5>
-				<label for="email">Email address:</label><br>
-				<input type="email" id="email" name="email" value="" size=30><br>
-			</div>
-
-			<div class="question">
-				<h4 style="margin: 0px; font-weight: 500;">Question 6</h4>
-				<h5 style="margin-top: 8px; margin-bottom: 12px;">If you have any other feedback or thoughts on Coolors, please write
-				them here.</h5>
-				<textarea name="comments" rows="5" cols="30"></textarea>
-			</div>
-
-			<div class="question">
-				<input type="submit" class="submit" value="Submit">
-			</div>
-		</form>
 	</div>
 
 	<div>
