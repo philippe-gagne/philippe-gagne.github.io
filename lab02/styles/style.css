@@ -1,10 +1,25 @@
 /* This style sheet is taken from  https://www.w3schools.com/howto/howto_js_tabs.asp> */
 
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body{
+  font-family: 'Vollkorn', serif;
+  width: 80%;
+  margin: auto;
+}
+
+header{
+  font-size: 32px;
+  font-weight:700px;
+  padding: 0px, 24px;
+}
+
 /* Style the tab */
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
+  font-family: 'Vollkorn', serif;
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -16,6 +31,8 @@
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.3s;
+  font-family: 'Vollkorn', serif;
+  font-size: 16px;
 }
 
 /* Change background color of buttons on hover */
@@ -34,4 +51,95 @@
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+}
+
+.display-product{
+  /*Code taken from http://1linelayouts.glitch.me/*/
+  display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(232px, 232px));
+}
+
+/* Following styles taken from https://www.w3schools.com/howto/howto_css_switch.asp*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #10bd0a;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(16px);
+  -ms-transform: translateX(16px);
+  transform: translateX(16px);
+}
+
+
+/*Following styles are original*/
+
+.item-card {
+  border-color: black;
+  border-style: solid;
+  border-radius: 4px;
+  color: black;
+  padding: 16px;
+  width:fit-content;
+  min-width: 200px;
+  margin-bottom: 16px;
+  margin-right: 16px;
+}
+.item-card .organic-icon {
+  width: 64px; 
+  float: right; 
+  margin-top:0;
+}
+.item-card h3{
+  margin: 0%;
+}
+.item-card h4{
+  margin-top:12px; margin-bottom: 12px;
+}
+.item-card input{
+  width: 32px;
+}
+.item-card .add-item{
+  margin-left:12px;
 }

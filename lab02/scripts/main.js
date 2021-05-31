@@ -30,35 +30,77 @@ function openInfo(evt, tabName) {
 function populateListProductChoices(slct1, slct2) {
     var s1 = document.getElementById(slct1);
     var s2 = document.getElementById(slct2);
-	
 	// s2 represents the <div> in the Products tab, which shows the product list, so we first set it empty
     s2.innerHTML = "";
-		
-	// obtain a reduced list of products based on restrictions
-    var optionArray = restrictListProducts(products, s1.value);
+	
+	//make a list of restrictions based on slct1 contents
+	var elements = s1.elements;
+	var restrictions = [];
 
-	// for each item in the array, create a checkbox element, each containing information such as:
-	// <input type="checkbox" name="product" value="Bread">
-	// <label for="Bread">Bread/label><br>
+	 for(var i=0, element; element=elements[i++];){
+		 if (element.checked){
+			 restrictions.push(element.value)
+		 }
+	 }
+	
+
+	// obtain a reduced list of products based on restrictions
+    var removedItems = restrictListProducts(products, restrictions);
+
+	// sorting algo taken from https://stackoverflow.com/questions/8092776/how-to-sort-list-of-dicts-in-js
+	products.sort(function(first, second) {
+		return second.price - first.price;
+	   });
+	//----------------------
 		
-	for (i = 0; i < optionArray.length; i++) {
-			
-		var productName = optionArray[i];
-		// create the checkbox and add in HTML DOM
-		var checkbox = document.createElement("input");
-		checkbox.type = "checkbox";
-		checkbox.name = "product";
-		checkbox.value = productName;
-		s2.appendChild(checkbox);
+	for (i = 0; i < products.length; i++) {
 		
-		// create a label for the checkbox, and also add in HTML DOM
-		var label = document.createElement('label')
-		label.htmlFor = productName;
-		label.appendChild(document.createTextNode(productName));
-		s2.appendChild(label);
-		
-		// create a breakline node and add in HTML DOM
-		s2.appendChild(document.createElement("br"));    
+		if(!removedItems.includes(products[i])){
+
+			// create the item card
+			var card = document.createElement("div");
+			card.className = "item-card";
+			card.id = "item-card";
+			card.setAttribute("name", "item-card");
+
+			if(products[i].organic){
+				var icon = document.createElement("img");
+				icon.src="./assets/organic-icon.png";
+				icon.className="organic-icon";
+				icon.title="Certified Organic";
+				card.appendChild(icon);
+			}
+
+			// add item name to card
+			var name = document.createElement("h3");
+			name.id = "item-name";
+			name.innerHTML = products[i].name;
+			card.appendChild(name);
+
+			// add item price to card
+			var price = document.createElement("h4");
+			price.id = "item-price";
+			price.innerHTML = ("$").concat(products[i].price);
+			card.appendChild(price);
+
+			// add label for input box
+			var label = document.createElement('label');
+			label.for = "quantity";
+			label.innerHTML = "Quantity: ";
+			card.appendChild(label);
+
+			// add input for quantity of items
+			var inputBox = document.createElement('input');
+			inputBox.type = "text";
+			inputBox.name = "quantity";
+			inputBox.id = "quantity";
+			inputBox.value = "0";
+			card.appendChild(inputBox);
+
+			// add card to page
+			s2.appendChild(card);
+			   
+		}
 	}
 }
 	
@@ -68,27 +110,50 @@ function populateListProductChoices(slct1, slct2) {
 
 function selectedItems(){
 	
-	var ele = document.getElementsByName("product");
-	var chosenProducts = [];
+	let cards = document.getElementsByName("item-card");
 	
 	var c = document.getElementById('displayCart');
 	c.innerHTML = "";
 	
+	var t = document.getElementById("tally");
+	var tally = 0;
+
 	// build list of selected item
-	var para = document.createElement("P");
-	para.innerHTML = "You selected : ";
-	para.appendChild(document.createElement("br"));
-	for (i = 0; i < ele.length; i++) { 
-		if (ele[i].checked) {
-			para.appendChild(document.createTextNode(ele[i].value));
-			para.appendChild(document.createElement("br"));
-			chosenProducts.push(ele[i].value);
+	for (i=0; i<cards.length; i++){
+
+		if (cards[i].querySelector("input").value != 0){
+
+			// create the item card
+			var card = document.createElement("div");
+			card.className = "item-card";
+			card.id = "item-card";
+			card.name = "item-card";
+
+			// add item name to card
+			var name = document.createElement("h3");
+			name.id = "item-name";
+			name.innerHTML = cards[i].querySelector("h3").innerHTML;
+			card.appendChild(name);
+
+			var quantity = document.createElement("h4");
+			quantity.id = "item-quantity";
+			quantity.innerHTML = "Quantity: ".concat(cards[i].querySelector("input").value);
+			card.appendChild(quantity);
+
+			var cost = document.createElement("h4");
+			cost.id = "item-total-cost";
+			cost.innerHTML = "Total Item Cost: $".concat(
+				Number(quantity.innerHTML = cards[i].querySelector("input").value)*Number(cards[i].querySelector("h4").innerHTML.slice(1)));
+			card.appendChild(cost);
+			
+			tally = tally + Number(quantity.innerHTML = cards[i].querySelector("input").value)*Number(cards[i].querySelector("h4").innerHTML.slice(1));
+
+			c.appendChild(card);
 		}
 	}
-		
-	// add paragraph and total price
-	c.appendChild(para);
-	c.appendChild(document.createTextNode("Total Price is " + getTotalPrice(chosenProducts)));
-		
+
+	t.innerHTML = "Your cart subtotal is $"+tally;
+
 }
+
 
