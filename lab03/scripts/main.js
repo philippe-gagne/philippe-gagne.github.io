@@ -23,17 +23,10 @@ function openInfo(evt, tabName) {
 }
 
 
-	
-// generate a checkbox list from a list of products
-// it makes each product name as the label for the checkbos
+function hideItems(){
 
-function populateListProductChoices(slct1, slct2) {
-    var s1 = document.getElementById(slct1);
-    var s2 = document.getElementById(slct2);
-	// s2 represents the <div> in the Products tab, which shows the product list, so we first set it empty
-    s2.innerHTML = "";
-	
-	//make a list of restrictions based on slct1 contents
+	var s1 = document.getElementById("dietSelect");
+
 	var elements = s1.elements;
 	var restrictions = [];
 
@@ -42,33 +35,61 @@ function populateListProductChoices(slct1, slct2) {
 			 restrictions.push(element.value)
 		 }
 	 }
-	
 
-	// obtain a reduced list of products based on restrictions
-    var removedItems = restrictListProducts(products, restrictions);
+	var removedItems = restrictListProducts(products, restrictions);
+	console.log(removedItems);
+
+	let cards = document.getElementsByName("item-card");
+	console.log(cards);
+
+	for (i=0; i<cards.length; i++){
+
+		if(removedItems.includes(cards[i].getAttribute('id').replace("-item-card", ""))){
+			
+			cards[i].style.display = "none";
+
+		} else {
+			cards[i].style.display = "block";
+		}
+
+	}
+
+}
+
+
+// generate a checkbox list from a list of products
+// it makes each product name as the label for the checkbos
+
+function populateListProductChoices() {
+
+	document.getElementById('cart-tab').click()
+
+    var s2 = document.getElementById("displayProduct");
+	// s2 represents the <div> in the Products tab, which shows the product list, so we first set it empty
+    s2.innerHTML = "";
 
 	// sorting algo taken from https://stackoverflow.com/questions/8092776/how-to-sort-list-of-dicts-in-js
 	products.sort(function(first, second) {
-		return second.price - first.price;
+		return first.price - second.price;
 	   });
 	//----------------------
 		
 	for (i = 0; i < products.length; i++) {
 		
-		if(!removedItems.includes(products[i])){
+		// if(!removedItems.includes(products[i])){
 
 			// create the item card
 			var card = document.createElement("div");
 			card.className = "item-card";
-			card.id = "item-card";
+			card.id = products[i].name.concat("-item-card");
 			card.setAttribute("name", "item-card");
 
-			if(products[i].organic){
-				var icon = document.createElement("img");
-				icon.src="./assets/organic-icon.png";
-				icon.className="organic-icon";
-				icon.title="Certified Organic";
-				card.appendChild(icon);
+			if(products[i].src != ""){
+				var image = document.createElement("img");
+				image.className="item-card-thumbnail";
+				image.id=products[i].name.concat("-thumbnail");
+				image.src=products[i].src;
+				card.appendChild(image);
 			}
 
 			// add item name to card
@@ -77,9 +98,17 @@ function populateListProductChoices(slct1, slct2) {
 			name.innerHTML = products[i].name;
 			card.appendChild(name);
 
+			if(products[i].organic){
+				var icon = document.createElement("img");
+				icon.src="./assets/organic-logo.png";
+				icon.className="organic-icon";
+				icon.title="Certified Organic";
+				card.appendChild(icon);
+			}
+
 			// add item price to card
 			var price = document.createElement("h4");
-			price.id = "item-price";
+			price.id = products[i].name.concat("-item-price");
 			price.innerHTML = ("$").concat(products[i].price);
 			card.appendChild(price);
 
@@ -97,63 +126,113 @@ function populateListProductChoices(slct1, slct2) {
 			inputBox.value = "0";
 			card.appendChild(inputBox);
 
+			var addButton = document.createElement('button');
+			addButton.className = "add-button";
+			addButton.id = products[i].name.concat("-add-button");
+			addButton.innerHTML = "Add";
+			addButton.setAttribute('onclick', 'addItemToCart("'.concat(products[i].name, '")'));
+			card.appendChild(addButton);
+
 			// add card to page
 			s2.appendChild(card);
 			   
-		}
+		// }
 	}
 }
-	
+
+
+function addItemToCart(name){
+
+	var item = document.getElementById(name.concat("-item-card"));
+
+	var c = document.getElementById('displayCart');
+
+	var cartCards = document.getElementsByName("cart-card");
+	console.log(cartCards);
+	var t = document.getElementById("tally");
+	var tally = 0;
+
+	var inCart = false;
+	var cartIndex;
+
+	// Check if current tally is 0
+	if(t.innerHTML == "Your cart is empty"){
+		tally = 0;
+	} else{
+		tally = Number(t.innerHTML.split("$")[1]);
+	}
+	console.log("tally", tally);
+
+	// Check if there are other items in the cart and if the added item is already in it
+	if(cartCards != null){
+		for (i=0; i<cartCards.length; i++){
+			if(cartCards[i].querySelector("h3").innerHTML==item.querySelector("h3").innerHTML){
+				inCart = true; 
+				cartIndex = i;
+			}
+		}
+	}
+
+	var removeFrom;
+	if(inCart){
+		console.log
+		if (Number(item.querySelector("input").value) == 0){
+			// cartCards[cartIndex].querySelector("h4").innerHTML = 0;
+			cartCards[cartIndex].remove();
+		} else if (Number(item.querySelector("input").value) != 0){
+			cartCards[cartIndex].querySelector("h4").innerHTML = "Quantity: ".concat(item.querySelector("input").value, ' x ', item.querySelector("h4").innerHTML);
+			
+		}
+	} else if (Number(item.querySelector("input").value) != 0){
+
+		// create the item card
+		var card = document.createElement("div");
+		card.className = "cart-card";
+		card.id = item.querySelector("h3").innerHTML.concat('-cart-card');
+		card.setAttribute('name', "cart-card");
+
+		// add item name to card
+		var name = document.createElement("h3");
+		name.id = "item-name";
+		name.innerHTML = item.querySelector("h3").innerHTML;
+		card.appendChild(name);
+
+		var quantity = document.createElement("h4");
+		quantity.id = "item-quantity";
+		quantity.innerHTML = "".concat(item.querySelector("input").value, ' x ', item.querySelector("h4").innerHTML);
+		card.appendChild(quantity);
+
+		c.appendChild(card);
+	}
+
+	tally = 0;
+	if(cartCards != null){
+		for (i=0; i<cartCards.length; i++){
+			var vals = cartCards[i].querySelector("h4").innerHTML.split(" x $");
+			tally = tally + Number(vals[0])*Number(vals[1]);
+		}
+	}
+
+	tally = precisionRoundMod(tally, 2);
+
+	if (tally != 0){
+
+		t.innerHTML = "Your subtotal is $".concat(tally);
+
+	}
+	// console.log("tally ", tally);
+}
+
 // This function is called when the "Add selected items to cart" button in clicked
 // The purpose is to build the HTML to be displayed (a Paragraph) 
 // We build a paragraph to contain the list of selected items, and the total price
 
-function selectedItems(){
-	
-	let cards = document.getElementsByName("item-card");
-	
-	var c = document.getElementById('displayCart');
-	c.innerHTML = "";
-	
-	var t = document.getElementById("tally");
-	var tally = 0;
+// From: https://stackoverflow.com/questions/1458633/how-to-deal-with-floating-point-number-precision-in-javascript
+function precisionRoundMod(number, precision) {
+	var factor = Math.pow(10, precision);
+	var n = precision < 0 ? number : 0.01 / factor + number;
+	return Math.round( n * factor) / factor;
+  }
 
-	// build list of selected item
-	for (i=0; i<cards.length; i++){
-
-		if (cards[i].querySelector("input").value != 0){
-
-			// create the item card
-			var card = document.createElement("div");
-			card.className = "item-card";
-			card.id = "item-card";
-			card.name = "item-card";
-
-			// add item name to card
-			var name = document.createElement("h3");
-			name.id = "item-name";
-			name.innerHTML = cards[i].querySelector("h3").innerHTML;
-			card.appendChild(name);
-
-			var quantity = document.createElement("h4");
-			quantity.id = "item-quantity";
-			quantity.innerHTML = "Quantity: ".concat(cards[i].querySelector("input").value);
-			card.appendChild(quantity);
-
-			var cost = document.createElement("h4");
-			cost.id = "item-total-cost";
-			cost.innerHTML = "Total Item Cost: $".concat(
-				Number(quantity.innerHTML = cards[i].querySelector("input").value)*Number(cards[i].querySelector("h4").innerHTML.slice(1)));
-			card.appendChild(cost);
-			
-			tally = tally + Number(quantity.innerHTML = cards[i].querySelector("input").value)*Number(cards[i].querySelector("h4").innerHTML.slice(1));
-
-			c.appendChild(card);
-		}
-	}
-
-	t.innerHTML = "Your cart subtotal is $"+tally;
-
-}
 
 

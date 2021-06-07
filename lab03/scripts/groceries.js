@@ -9,8 +9,10 @@ var products = [
 		nutFree: true,
 		vegetarian: true,
 		vegan: true,
+		glutenFree: true,
 		organic: true,
-		price: 1.99
+		price: 1.99,
+		src: 'assets/item-images/lettuce.jpg'
 	},
 	{
 		name: "Almond granola",
@@ -18,8 +20,10 @@ var products = [
 		nutFree: false,
 		vegetarian: true,
 		vegan: true,
+		glutenFree: true,
 		organic: true,
-		price: 2.35
+		price: 2.35,
+		src: 'assets/item-images/almond-granola.jpg'
 	},
 	{
 		name: "Salmon",
@@ -27,17 +31,21 @@ var products = [
 		nutFree: true,
 		vegetarian: false,
 		vegan: false,
+		glutenFree: true,
 		organic: false,
-		price: 10.59
+		price: 10.59,
+		src: 'assets/item-images/salmon.jpg'
 	},
 	{
-		name: "Yogurt",
+		name: "Strawberry yogurt",
 		dairyFree: false,
 		nutFree: true,
 		vegetarian: true,
 		vegan: false,
+		glutenFree: true,
 		organic: true,
-		price: 3.39
+		price: 3.39,
+		src: 'assets/item-images/strawberry-yogurt.jpg'
 	},
 	{
 		name: "Oat milk",
@@ -45,17 +53,21 @@ var products = [
 		nutFree: true,
 		vegetarian: true,
 		vegan: true,
+		glutenFree: true,
 		organic: true,
-		price: 4.49
+		price: 4.49,
+		src: 'assets/item-images/oat-milk.png'
 	},
 	{
-		name: "Apple",
+		name: "Fuji apple",
 		dairyFree: true,
 		nutFree: true,
 		vegetarian: true,
 		vegan: true,
+		glutenFree: true,
 		organic: false,
-		price: 1.19
+		price: 1.19,
+		src: 'assets/item-images/apple.jpg'
 	},
 	{
 		name: "Steak",
@@ -63,8 +75,10 @@ var products = [
 		nutFree: true,
 		vegetarian: false,
 		vegan: false,
+		glutenFree: true,
 		organic: true,
-		price: 12
+		price: 12,
+		src: 'assets/item-images/steak.jpg'
 	},
 	{
 		name: "Tortilla chips",
@@ -72,26 +86,43 @@ var products = [
 		nutFree: true,
 		vegetarian: true,
 		vegan: true,
+		glutenFree: true,
 		organic: false,
-		price: 3.25
+		price: 3.25,
+		src: 'assets/item-images/tortilla-chips.jpg'
 	},
 	{
-		name: "Cheddar cheese",
+		name: "White cheddar cheese",
 		dairyFree: false,
 		nutFree: true,
 		vegetarian: true,
 		vegan: false,
+		glutenFree: true,
 		organic: true,
-		price: 6.49
+		price: 6.49,
+		src: 'assets/item-images/white-cheddar-cheese.jpg'
 	},
 	{
-		name: "Coffee",
+		name: "Whole coffee beans",
 		dairyFree: true,
 		nutFree: true,
 		vegetarian: true,
 		vegan: true,
+		glutenFree: true,
 		organic: false,
-		price: 14.49
+		price: 14.49,
+		src: 'assets/item-images/whole-coffee-beans.jpg'
+	},
+	{
+		name: "Sourdough bread",
+		dairyFree: true,
+		nutFree: true,
+		vegetarian: true,
+		vegan: true,
+		glutenFree: false,
+		organic: true,
+		price: 5.29,
+		src: 'assets/item-images/sourdough.jpg'
 	}
 ];
 
@@ -108,18 +139,20 @@ function restrictListProducts(prods, restrictions) {
 	for (let i=0; i<product_list.length; i+=1) {
 		// console.log(product_list[i])
 		if (restrictions.includes("lactose-intolerant") && (prods[i].dairyFree == false)){
-			forRemoval.push(prods[i]);
+			forRemoval.push(prods[i].name);
 		}
 		else if (restrictions.includes("nut-allergy") && (prods[i].nutFree == false)){
-			forRemoval.push(prods[i]);
+			forRemoval.push(prods[i].name);
 		}
 		else if (restrictions.includes("vegetarian") && (prods[i].vegetarian == false)){
-			forRemoval.push(prods[i]);
+			forRemoval.push(prods[i].name);
 		}
 		else if (restrictions.includes("vegan") && (prods[i].vegan == false)){
-			forRemoval.push(prods[i]);
+			forRemoval.push(prods[i].name);
+		} else if (restrictions.includes("no-gluten") && prods[i].glutenFree == false){
+			forRemoval.push(prods[i].name);
 		} else if (organicOnly && (prods[i].organic == false)){
-			forRemoval.push(prods[i]);
+			forRemoval.push(prods[i].name);
 		}
 	}
 

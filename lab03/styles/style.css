@@ -1,24 +1,60 @@
 /* This style sheet is taken from  https://www.w3schools.com/howto/howto_js_tabs.asp> */
 
 @import url('https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200;300;400;500;600;700&display=swap');
 
-body{
-  font-family: 'Vollkorn', serif;
-  width: 80%;
-  margin: auto;
+html, body{
+  padding: 0;
+  margin: 0;
 }
 
-header{
-  font-size: 32px;
-  font-weight:700px;
-  padding: 0px, 24px;
+.header{
+  /* width: 100%; */
+  font-family: 'Oswald';
+  font-size: 34px;
+  font-weight:500px;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin: auto;
+  
+  background-color: #133c55;
+  color: #eee;
+
+  /* border-top:none; */
+  border-bottom: 2px solid #773344;
+}
+
+.page-content{
+  font-family: 'Vollkorn', serif;
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr minmax(150px, 25%);
+}
+
+.catalog{
+  margin-right: 1rem;
+}
+
+h2{
+  font-family: 'Oswald';
+  font-weight: 400;
+}
+h3{
+  display: inline-block;
+}
+
+p{
+  font-family: 'Lato';
 }
 
 /* Style the tab */
 .tab {
   overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  /* border: 1px solid #ccc; */
+  background-color: transparent;
   font-family: 'Vollkorn', serif;
 }
 
@@ -31,8 +67,8 @@ header{
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.3s;
-  font-family: 'Vollkorn', serif;
-  font-size: 16px;
+  font-family: 'Oswald';
+  font-size: 24px;
 }
 
 /* Change background color of buttons on hover */
@@ -54,11 +90,43 @@ header{
 }
 
 .display-product{
-  /*Code taken from http://1linelayouts.glitch.me/*/
+  /*Code taken from http://1linelayouts.glitch.me/ */
   display: grid;
     grid-gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(232px, 232px));
 }
+
+.add-button{
+  background-color:#133c55;
+  color:#eee;
+  border: none;
+  font-family: 'Oswald';
+  border-radius: 2px;
+
+  float: right;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.add-button:hover{
+  /* background-color: #202030; */
+  background-color: #0f3044;
+  cursor: pointer;
+}
+
+.add-button:active{
+  background-color: #0c2433;
+  color:#bbb;
+}
+
+.sidebar{
+  border: black solid 2px;
+  border-radius: 4px;
+  margin-top: 32px; 
+}
+
 
 /* Following styles taken from https://www.w3schools.com/howto/howto_css_switch.asp*/
 .switch {
@@ -115,6 +183,31 @@ input:checked + .slider:before {
 
 /*Following styles are original*/
 
+.cart-card {
+  border-color: black;
+  border-style: solid;
+  border-radius: 4px;
+  color: black;
+  padding: 16px;
+  width:auto;
+  /* min-width: 200px; */
+  margin-bottom: 16px;
+  margin-right: 16px;
+}
+.cart-card h3{
+  margin-top: 0;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+  font-family: "Oswald";
+  font-weight: 500;
+}
+.cart-card h4{
+  margin-top: 0; margin-bottom: 0;  
+  word-wrap: break-word;
+  font-family: 'Lato';
+  font-size: medium;
+}
+
 .item-card {
   border-color: black;
   border-style: solid;
@@ -126,19 +219,34 @@ input:checked + .slider:before {
   margin-bottom: 16px;
   margin-right: 16px;
 }
+
+.item-card-thumbnail{
+  max-width:100%; 
+  /* max-height: 100px; */
+}
 .item-card .organic-icon {
-  width: 64px; 
+  width: 48px; 
   float: right; 
   margin-top:0;
 }
 .item-card h3{
   margin: 0%;
+  width: 75%;
+  word-wrap: break-word;
+  font-family: 'Oswald';
+  font-weight: 500;
 }
 .item-card h4{
   margin-top:12px; margin-bottom: 12px;
+  font-family: "Lato";
 }
+
 .item-card input{
   width: 32px;
+  font-family: "Lato";
+}
+.item-card label{
+  font-family: "Lato";
 }
 .item-card .add-item{
   margin-left:12px;

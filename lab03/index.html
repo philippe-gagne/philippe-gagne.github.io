@@ -6,76 +6,85 @@
   <title>Gagné Groceries</title>
 </head>
 
-<body>
+<body onload="populateListProductChoices()">
+<!-- <body> -->
 
-<div style="padding-top: 4px;background: linear-gradient(104.99deg, #B9C71A 4.75%, #19C220 49.93%, #1898F4 95.12%);width:100%;"></div>
+<!-- <div style="padding-top: 4px;background: linear-gradient(104.99deg, #B9C71A 4.75%, #19C220 49.93%, #1898F4 95.12%);width:100%;"></div> -->
 
-<div>
-  <header>Gagné Groceries</header>
-</div>
+<div class="header">GAGNÉ'S GROCERIES</div>
+<!-- </div> -->
 
-<!-- Tab links, each one with an onclick event associated with it -->
-<div class="tab">
-  <button class="tablinks" onclick="openInfo(event, 'Products')">Products</button>
-  <button class="tablinks" onclick="openInfo(event, 'Cart')">Cart</button>
-  <button class="tablinks" onclick="openInfo(event, 'Settings')">Settings</button>
-</div>
+<div class="page-content">
 
-<!-- Tab content -->
-<div id="Settings" class="tabcontent">
-  <h2>Client Settings</h2>
+<div class = "catalog">
 
-  <div>
-    <h3 style="margin-bottom: 8px; margin-top:16px">Select any dietary restrictions you may have:</h3>
-    <p style="margin-top: 8px; margin-bottom: 8px;">This setting will filter out any items that do not comply with your needs.</p>
-    <form id="dietSelect" name="dietSelect" style="margin-top: 8px;" onchange="populateListProductChoices(this.id, 'displayProduct')">
-      <input type="checkbox" value="lactose-intolerant">Lactose intolerance</option><br>
-      <input type="checkbox" value="nut-allergy">Nut allergy</option><br>
-      <input type="checkbox" value="vegetarian">Vegetarian</option><br>
-      <input type="checkbox" value="vegan">Vegan</option><br>
-      <input type="checkbox" value="none">None</option><br>
-    </form>
-  </div>
-</div>
+    <h2 style="margin-bottom: 8px; font-size: xx-large;">Your Catalog</h2>
+    <p style="margin-top: 8px;">We prefiltered products based on your preferences.</p>
+    
+    <div style="margin-bottom: 12px; font-family: 'Lato'; font-weight: 600;">
+      Organic Items Only
+      <label class="switch">
+        <input type="checkbox" id="organic-switch" onchange="hideItems()">
+        <span class="slider round"></span>
+      </label>
+    </div>
 
-<div id="Products" class="tabcontent">
-  <h2 style="margin-bottom: 8px;">Your targeted products</h2>
-  <p style="margin-top: 8px;">We preselected products based on your restrictions.</p>
+    <div id="displayProduct" class="display-product">
   
-  <div style="margin-bottom: 12px;">
-    Organic Items Only
-    <label class="switch">
-      <input type="checkbox" id="organic-switch" onchange="populateListProductChoices('dietSelect', 'displayProduct')">
-      <span class="slider round"></span>
-    </label>
+      <!-- <div class="item-card" id="Lettuce">
+			<img id="lettuce-image" class="item-card-thumbnail" src="assets/item-images/lettuce.jpg"/>
+			<h3 id="item-name">Item Name</h3>
+			<img src='./assets/organic-logo.png' class="organic-icon" alt="organic icon" title="Certified Organic"/>
+			<h4 id="item-price">0.00$</h4>
+			<label for="quantity">Quantity:</label>
+			<input type="text" name="quantity" value="0"> 
+			<button class="add-button">Add</button>
+      </div> -->
+    </div>
   </div>
-	 <button id="addCart" type="button" class="block" style="margin-bottom: 12px;" onclick="selectedItems()">
-		Add selected items to cart.
-	</button>
-  <div id="displayProduct" class="display-product"></div>
-	 
-<!-- 
-  <div class="item-card">
-    <h3 id="item-name">Item Name</h3>
-    <h4 id="item-price">0.00$</h4>
-    <label for="quantity">Quantity:</label>
-    <input type="text" name="quantity" value="0">
-    <img src='./assets/organic-icon.png' class="organic-icon" alt="organic icon" title="Certified Organic"/>
-  </div> -->
+  
+<div class="sidebar">
+
+  <div class="tab">
+    <button class="tablinks" id="cart-tab" onclick="openInfo(event, 'Cart')">Cart</button>
+    <button class="tablinks" id="settings-tab" onclick="openInfo(event, 'Settings')">Preferences</button>
+  </div>
+
+  <!-- Tab content -->
+  <div id="Settings" class="tabcontent">
+    <div>
+      <h3 style="margin-bottom: 8px; margin-top:8px; font-family: 'Oswald'; font-weight: 500;">Dietary restrictions:</h3>
+      <p style="margin-top: 0px; margin-bottom: 8px;">This setting will filter out any items that do not comply with your needs.</p>
+      <form id="dietSelect" name="dietSelect" style="margin-top: 8px; font-family: 'Lato';" onchange="hideItems()">
+        <input type="checkbox" value="lactose-intolerant">Lactose intolerance</option><br>
+        <input type="checkbox" value="nut-allergy">Nut allergy</option><br>
+        <input type="checkbox" value="no-gluten">Gluten-free</option><br>
+        <input type="checkbox" value="vegetarian">Vegetarian</option><br>
+        <input type="checkbox" value="vegan">Vegan</option><br>
+      </form>
+    </div>
+  </div>
+
+
+  <div id="Cart" class="tabcontent">
+    <div>
+      <h3 id="tally" style="font-family: 'Oswald'; font-weight: 500;" >Your cart is empty</h3>
+    </div>
+    <div id="displayCart" class="display-product"></div>
+  </div>
 
 </div>
 
-<div id="Cart" class="tabcontent">
-  <h2>Cart</h2>
-  <div>
-    <h3 id="tally" style = >Here is your cart.</h3>
-  </div>
-  <div id="displayCart" class="display-product"></div>
 </div>
+
+<!-- end of page-content -->
+</div> 
 
 <div>
-  <footer><p style="font-style: italic; text-align: right;">Website designed and developed by Philippe Gagné</p></footer>
+  <footer><p style="font-style: italic; text-align: right; margin-right: 5%">Website designed and developed by Philippe Gagné</p></footer>
 </div>
+<!-- Tab links, each one with an onclick event associated with it -->
+
 
 <script src="scripts/groceries.js"></script>
 <script src="scripts/main.js"></script>
