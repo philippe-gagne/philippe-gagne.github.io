@@ -1,0 +1,192 @@
+<!doctype html>
+<!-- Here is a link to the code the documents this code is based on
+https://getbootstrap.com/docs/5.0/getting-started/introduction/
+This will help you get started with your code!
+-->
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="styles/styles.css" rel="stylesheet" type="text/css">
+    <title>Module 4 Lab</title>
+</head>
+<body style="background-color: #a6cfd5;">
+<!--
+I store all of the page information in a container,
+Many websites will use what is called CSS grid layouts, where you will have a header, body, footer and both sides used for ads or other information
+-->
+<div class = "container-lg">
+
+    <!--
+    Most websites now feature what is called a NavBar.
+    The example I give is quite simple with a logo and some text, but you can use it for many navigational patterns
+    https://getbootstrap.com/docs/5.0/components/navbar/
+    -->
+
+    <nav class="navbar bg-transparent  text-white p-3 my-0 ">
+        <h1 class="text-dark" style="width: fit-content;"><img src="assets/vet-logo.png" height="120" class="mx-4">Hintonburg Animal Hospital</h1>
+        <p class="text-dark mt-3" style="text-align: right;">11 Bullman Street<br>Ottawa, ON, Canada<br>K1Y 2S2</p>
+    </nav>
+    
+    <div class=" p-3 my-3 border bg-white">
+        <h2>About us</h2>
+        <p class="" style="font-size: 20px">We are a small clinic located in the heart of beautiful Hintonburg, in Ottawa, Canada.
+         Our dedicated staff has proudly served the Ottawa pet community for over 15 years. </p>
+    </div>
+    
+    <div class=" p-3 my-3 border bg-white">
+        <h2>Our Staff</h2>
+        <div class="container">
+            <div class="row mt-3">
+                 <div class="col ps-0 pe-3">
+                    <h3><img src="assets/harry.jpg" class="staff-image">Dr. Harry Jennings</h3>
+                    <p>Harry graduated from the Ontario Veterinary College in 2001 and, after a few years in the industry, 
+                        opened Hintonburg Animal Hospital in 2006. He remains the sole owner of HAH. He loves hiking in the Gatineau hills
+                    and spending time with his Great Dane, Hunter. </p>
+                </div>
+                <div class="col ps-0 pe-3">
+                    
+                    <h3> <img src="assets/kristi.jpg" class="staff-image">Dr. Kristi Russell</h3>
+                    <p>Kristi mentored under Dr. Jennings after graduating from the Ontario Veterinary College in 2010 and has been with us ever since!  
+                        She loves baking and hanging out at home with her two cats, Dexter and Amity.</p>
+                </div>
+                <div class="col ps-0 pe-3">
+                    <h3><img src="assets/cecelia.jpg" class="staff-image">Dr. Cecelia Flores</h3>
+                    <p>Cecelia was born in Madrid, Spain in 1982, and came to Canada in 2000 to study at the University of Toronto. 
+                        She graduated in 2007 from the Western College of Veterinary Medicine in Saskatoon and has been at HAH since 2012. She's also our resident bird expert!</p>
+                </div>
+            </div>
+        </div>
+            
+        </row>
+    </div>
+
+    <div class=" p-3 my-3 border bg-white">
+    <h2>Our Services</h2>
+    <!-- Service descriptions from http://www.billingsbridgeanimalhospital.ca/services -->
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    General Medecine - Costs Vary
+                </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">We offer inpatient and outpatient medical treatment for eye, ear, skin, gastrointestinal, respiratory, cardiac, urogenital, renal and hepatic diseases. Prices vary by animal needs.</div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    Surgical Care - Costs Vary
+                </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">We provide surgical services ranging from routine spays and neuters to more complex bladder, ear, eye, gastrointestinal, orthopedic and tumour removal procedures. Prices vary by operation.</div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    Dentistry - Costs Vary
+                </button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">In addition to our medical and surgical services, we are fully equipped with the latest in dental equipment, including digital dental radiography. We offer routine cleanings (prophylaxis) ($300) and dental extractions (prices vary).</div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                    Digital Radiology - $50 to $250
+                </button>
+            </h2>
+            <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Our veterinarians care for your pets with the latest in technology, including a state-of-the-art digital radiograph machine which allows for speedy results. $50 - $250.</div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                    New Puppy / New Kitten Examinations - $250
+                </button>
+            </h2>
+            <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Let us give your pet a healthy start with a new puppy or new kitten examination. We are experienced in pediatric medicine and love seeing new pups and kittens.</div>
+            </div>
+        </div>
+    </div>
+   </div>
+
+   <div class=" p-3 my-3 border bg-white">
+    <h2>Book an Appointment</h2>
+
+    <form>
+        <div class="form-group" style="width: fit-content; display: inline-block;">
+            <label for="exampleFormControlSelect1">Service</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+                <option>General Medicine</option>
+                <option>Surgical Care</option>
+                <option>Dentistry</option>
+                <option>Radiology</option>
+                <option>New Pet Examinations</option>
+            </select>
+        </div>
+
+        <div class="form-group ps-3" style="width: fit-content; display: inline-block;">
+            <label for="exampleFormControlSelect2">Pet Details</label>
+            <select class="form-control" id="exampleFormControlSelect2">
+                <option>Dog - Male</option>
+                <option>Dog - Female</option>
+                <option>Cat - Male</option>
+                <option>Cat - Female</option>
+            </select>
+        </div>
+
+        <div class="form-group mt-3 w-50">
+            <label for="exampleFormControlTextarea1">Please provide further details on your animal's needs</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+
+        <div class="form-group mt-3 w-25" style="display: block;">
+            <label for="example-datetime-local-input">Date and Time</label>
+            <input class="form-control" type="datetime-local" value="2021-06-14T08:30:00" id="example-date-input">
+        </div>
+
+        <div class="form-group mt-3" style="display: inline-block;">
+            <label for="last-name-input">First Name</label>
+              <input class="form-control" type="text" value="" placeholder="John" id="first-name-input">
+        </div>
+
+        <div class="form-group mt-3 ps-3" style="display: inline-block;">
+            <label for="last-name-input">Last Name</label>
+              <input class="form-control" type="text" value="" placeholder="Smith" id="last-name-input">
+        </div>
+        <br>
+        <div class="form-group mt-3" style="display: inline-block;">
+            <label for="example-tel-input">Telephone Number</label>
+              <input class="form-control" type="tel" value="" placeholder="(123) 456-7890" id="example-tel-input">
+        </div>
+        
+        <div class="form-group mt-3 ps-3 w-50" style="display: inline-block;">
+            <label for="exampleFormControlInput1">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+        
+        <button type="submit" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal" style="display: block;">
+            Book
+        </button>
+
+    </form>
+
+   </div>
+
+
+</div>
+<!-- here we input our javascript helper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+</html>

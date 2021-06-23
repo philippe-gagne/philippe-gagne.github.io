@@ -1,0 +1,19 @@
+td{
+    font-size: 25px;
+}
+p{
+    font-size: 20px;
+}
+.btn{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.staff-image{
+    height:80px;
+    float: left;
+    margin-right: 12px;
+    margin-bottom: 8px;
+}
+h1, h2, h3, h4, h5, h6{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
