@@ -1,0 +1,98 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+intents:
+- greet
+- subscribe
+- unsubscribe
+- inform
+- thank
+- goodbye
+
+slots:
+  email:
+    type: unfeaturized
+    influence_conversation: false
+  explanation:
+    type: unfeaturized
+    influence_conversation: false
+
+responses:
+  utter_greet:
+    - text: |
+        Hello! How can I help you?
+    - text: |
+        Hi!
+  
+  utter_ask_email:
+    - text: |
+        What is your email address?
+  
+  utter_subscribed:
+    - text: |
+        Check your inbox at {email} in order to finish subscribing to the newsletter!
+    - text: |
+        You're all set! Check your inbox at {email} to confirm your subscription.
+  
+  utter_ask_explanation:
+     - text: |
+        Could you tell me why you want to unsubscribe?
+     - text: |
+        Why are you unsubscribing?
+     - text: |
+        I'd love to know why you're unsubscribing.
+     - text: |
+        Please provide feedback on why you're unsubscribing.
+    
+  utter_understanding:
+     - text: |
+        Alright, I understand. You won't receive any more emails from our newsletter.
+     - text: |
+        No worries. I'll remove you from our mailing list.
+     - text: |
+        That's okay. I'll remove you from the newsletter.
+     - text: |
+        Got it. Thank you for your feedback. I've unsubscribed you from the newsletter.
+
+  utter_thank:
+    - text: |
+        Of course! Happy to help!
+    - text: |
+        Glad I could help.
+    - text: |
+        No problem!
+    - text: |
+        My pleasure!
+
+  utter_goodbye:
+    - text: |
+        Goodbye!
+    - text: |
+        See you around!
+    - text: |
+        Until next time!
+    - text: |
+        Catch you later!
+  
+  
+actions:
+- '...'
+- utter_greet
+- utter_subscribed
+- utter_understanding
+- utter_ask_explanation
+- utter_thank
+- utter_goodbye
+
+forms:
+  newsletter_form:
+    required_slots:
+      email:
+      - type: from_text
+  
+  unsubscribe_form:
+    required_slots:
+      explanation:
+      - type: from_text
